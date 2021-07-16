@@ -35,6 +35,7 @@ public class EditActivity extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

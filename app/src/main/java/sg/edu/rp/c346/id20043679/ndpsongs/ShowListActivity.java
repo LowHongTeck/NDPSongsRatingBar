@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class ShowListActivity extends AppCompatActivity {
     ArrayAdapter<Song> aa;
     ListView lv;
     Button filter;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,6 @@ public class ShowListActivity extends AppCompatActivity {
         aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
         lv = findViewById(R.id.lv);
         lv.setAdapter(aa);
-
-
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
