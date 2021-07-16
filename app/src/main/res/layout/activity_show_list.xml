@@ -8,6 +8,12 @@
     android:padding="16dp"
     tools:context=".ShowListActivity">
 
+    <Button
+        android:id="@+id/filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show all songs with 5 stars" />
+
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"

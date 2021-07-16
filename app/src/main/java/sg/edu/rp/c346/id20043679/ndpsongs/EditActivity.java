@@ -9,18 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-public class MainActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
 
     EditText etTitle, etSingers, etYear;
     RadioGroup radioGroup;
-    Button btnInsert, btnShowList;
-
+    Button btnUpdate, btnDelete, btnCancel;
+    Song data;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit);
 
         etTitle = findViewById(R.id.etTitle);
         etSingers = findViewById(R.id.etSingers);
@@ -28,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
         radioGroup = findViewById(R.id.rGroup);
 
-        btnInsert = findViewById(R.id.btnUpdate);
-        btnShowList = findViewById(R.id.btnDelete);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnCancel = findViewById(R.id.btnCancel);
 
+        Intent i = getIntent();
+        data = (Song) i.getSerializableExtra("data");
 
-
-        btnInsert.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = etTitle.getText().toString();
@@ -54,18 +56,24 @@ public class MainActivity extends AppCompatActivity {
                 } else if (rGSelected == R.id.fiveStar){
                     stars = 5;
                 }
+                data.setTitle(title);
+                data.setSingers(singers);
+                data.setStars(stars);
+                data.setYear(year);
+                DBHelper dbh = new DBHelper(EditActivity.this);
+                dbh.updateSong(data);
 
-
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                dbh.insertSong(title, singers, year, stars);
+                finish();
             }
         });
 
-        btnShowList.setOnClickListener(new View.OnClickListener() {
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ShowListActivity.class);
-                startActivity(intent);
+                DBHelper dbh = new DBHelper(EditActivity.this);
+                dbh.deleteSong(data.getId());
+
+                finish();
             }
         });
 
