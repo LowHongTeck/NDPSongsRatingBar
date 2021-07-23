@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class EditActivity extends AppCompatActivity {
 
-    EditText etTitle, etSingers, etYear;
+    EditText etTitle, etSingers, etYear, etID;
     RadioGroup radioGroup;
     Button btnUpdate, btnDelete, btnCancel;
     Song data;
@@ -25,6 +26,7 @@ public class EditActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etSingers = findViewById(R.id.etSingers);
         etYear = findViewById(R.id.etYear);
+        etID = findViewById(R.id.etID);
 
         radioGroup = findViewById(R.id.rGroup);
 
@@ -34,6 +36,9 @@ public class EditActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
+
+        etID.setText(data.getId() + "");
+        etID.setEnabled(false);
 
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +83,14 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditActivity.this, ShowListActivity.class);
+                startActivity(intent);
 
+            }
+        });
 
 
     }

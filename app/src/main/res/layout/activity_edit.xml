@@ -9,6 +9,19 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/tvID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Song ID" />
+
+    <EditText
+        android:id="@+id/etID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none" />
+
+    <TextView
         android:id="@+id/songTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

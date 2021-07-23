@@ -19,7 +19,7 @@ public class ShowListActivity extends AppCompatActivity {
     ArrayAdapter<Song> aa;
     ListView lv;
     Button filter;
-    Spinner spinner;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,12 @@ public class ShowListActivity extends AppCompatActivity {
 
         filter = findViewById(R.id.filter);
 
-        al = new ArrayList<Song>();
-        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
+        al = new ArrayList<>();
+        //aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
         lv = findViewById(R.id.lv);
-        lv.setAdapter(aa);
+
+        adapter = new CustomAdapter(this, R.layout.row, al);
+        lv.setAdapter(adapter);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +41,7 @@ public class ShowListActivity extends AppCompatActivity {
                 al.clear();
                 DBHelper dbh = new DBHelper(ShowListActivity.this);
                 al.addAll(dbh.get5StarSong());
-                aa.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -59,7 +61,7 @@ public class ShowListActivity extends AppCompatActivity {
         DBHelper dbh = new DBHelper(ShowListActivity.this);
         al.clear();
         al.addAll(dbh.getAllSongs());
-        aa.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
 
     }
 

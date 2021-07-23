@@ -56,4 +56,18 @@ public class Song implements Serializable {
         return year + "\n" + title + "\n" + singers
             + " - " + year  + "\n" + showStar;
     }
+
+    public String showStar() {
+
+        String showStar = "";
+
+        for (int i = 0; i < stars; i++) {
+            showStar += " * ";
+        }
+
+
+
+        return showStar;
+
+    }
 }
