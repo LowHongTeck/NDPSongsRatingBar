@@ -56,47 +56,12 @@
         android:layout_height="wrap_content"
         android:text="Stars" />
 
-    <RadioGroup
-        android:id="@+id/rGroup"
+    <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/oneStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1" />
-
-        <RadioButton
-            android:id="@+id/twoStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2" />
-
-        <RadioButton
-            android:id="@+id/threeStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="3" />
-
-        <RadioButton
-            android:id="@+id/fourStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4" />
-
-        <RadioButton
-            android:id="@+id/fiveStar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5" />
-    </RadioGroup>
+        android:numStars="5"
+        android:theme="@style/RatingBar"/>
 
     <LinearLayout
         android:layout_width="match_parent"

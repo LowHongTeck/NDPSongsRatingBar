@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,7 +38,8 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvTitle = rowView.findViewById(R.id.textViewTitle);
         TextView tvYear = rowView.findViewById(R.id.textViewYear);
         TextView tvSinger = rowView.findViewById(R.id.textViewSinger);
-        TextView tvStar = rowView.findViewById(R.id.textViewStar);
+//        TextView tvStar = rowView.findViewById(R.id.textViewStar);
+        RatingBar ratings = rowView.findViewById(R.id.ratingBar2);
         ImageView ivNew = rowView.findViewById(R.id.imageViewNew);
 
         // Obtain the Android Version information based on the position
@@ -47,7 +49,9 @@ public class CustomAdapter extends ArrayAdapter {
         tvTitle.setText(currentItem.getTitle());
         tvYear.setText(currentItem.getYear()+"");
         tvSinger.setText(currentItem.getSingers());
-        tvStar.setText(currentItem.showStar());
+//        tvStar.setText(currentItem.showStar());
+        ratings.setRating(currentItem.getStars());
+        ratings.setEnabled(false);
         if (currentItem.getYear() > 2018) {
             ivNew.setVisibility(View.VISIBLE);
         } else {

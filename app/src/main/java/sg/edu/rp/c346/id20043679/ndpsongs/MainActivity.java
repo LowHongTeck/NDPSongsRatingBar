@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText etTitle, etSingers, etYear;
-    RadioGroup radioGroup;
+    //RadioGroup radioGroup;
     Button btnInsert, btnShowList;
+    RatingBar ratings;
 
 
 
@@ -26,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
         etSingers = findViewById(R.id.etSingers);
         etYear = findViewById(R.id.etYear);
 
-        radioGroup = findViewById(R.id.rGroup);
+        //radioGroup = findViewById(R.id.rGroup);
+        ratings = findViewById(R.id.ratingBar);
 
         btnInsert = findViewById(R.id.btnUpdate);
         btnShowList = findViewById(R.id.btnDelete);
+
+        ratings.setMax(5);
 
 
 
@@ -40,24 +45,25 @@ public class MainActivity extends AppCompatActivity {
                 String singers = etSingers.getText().toString();
                 int year = Integer.parseInt(etYear.getText().toString());
 
-                int rGSelected = radioGroup.getCheckedRadioButtonId();
-                int stars = 0;
-
-                if (rGSelected == R.id.oneStar){
-                    stars = 1;
-                } else if (rGSelected == R.id.twoStar){
-                    stars = 2;
-                } else if (rGSelected == R.id.threeStar){
-                    stars = 3;
-                } else if (rGSelected == R.id.fourStar){
-                    stars = 4;
-                } else if (rGSelected == R.id.fiveStar){
-                    stars = 5;
-                }
+                //int rGSelected = radioGroup.getCheckedRadioButtonId();
+                float numOfStars = ratings.getRating();
+//                int stars = 0;
+//
+//                if (rGSelected == R.id.oneStar){
+//                    stars = 1;
+//                } else if (rGSelected == R.id.twoStar){
+//                    stars = 2;
+//                } else if (rGSelected == R.id.threeStar){
+//                    stars = 3;
+//                } else if (rGSelected == R.id.fourStar){
+//                    stars = 4;
+//                } else if (rGSelected == R.id.fiveStar){
+//                    stars = 5;
+//                }
 
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                dbh.insertSong(title, singers, year, stars);
+                dbh.insertSong(title, singers, year, numOfStars);
             }
         });
 

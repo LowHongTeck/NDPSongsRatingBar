@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VER = 1;
+    private static final int DATABASE_VER = 2;
     private static final String DATABASE_NAME = "song.db";
 
     private static final String TABLE_SONG = "song";
@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + COLUMN_TITLE + " TEXT,"
                 + COLUMN_SINGERS + " TEXT,"
                 + COLUMN_YEAR + " INTEGER,"
-                + COLUMN_STARS + " INTEGER)";
+                + COLUMN_STARS + " FLOAT)";
         db.execSQL(createTableSql);
         Log.i("info" ,"created tables");
 
@@ -57,7 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public long insertSong(String title, String singers, int year, int stars){
+    public long insertSong(String title, String singers, int year, float stars){
 
         // Get an instance of the database for writing
         SQLiteDatabase db = this.getWritableDatabase();
@@ -88,7 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 String title = cursor.getString(1);
                 String singers = cursor.getString(2);
                 int year = cursor.getInt(3);
-                int star = cursor.getInt(4);
+                float star = cursor.getFloat(4);
 
 
                 Song song = new Song(id, title, singers, year, star);

@@ -8,9 +8,9 @@ public class Song implements Serializable {
     private String title;
     private String singers;
     private int year;
-    private int stars;
+    private float stars;
 
-    public Song(int id, String title, String singers, int year, int stars) {
+    public Song(int id, String title, String singers, int year, float stars) {
         this.id = id;
         this.title = title;
         this.singers = singers;
@@ -22,7 +22,7 @@ public class Song implements Serializable {
     public String getTitle() { return title; }
     public String getSingers() { return singers; }
     public int getYear() { return year; }
-    public int getStars() { return stars; }
+    public float getStars() { return stars; }
 
     public void setId(int id) {
         this.id = id;
@@ -40,34 +40,34 @@ public class Song implements Serializable {
         this.year = year;
     }
 
-    public void setStars(int stars) {
+    public void setStars(float stars) {
         this.stars = stars;
     }
 
 
-    public String toString() {
+//    public String toString() {
+//
+//        String showStar = "";
+//
+//        for (int i = 0; i < stars; i++) {
+//            showStar += "*";
+//        }
+//
+//        return year + "\n" + title + "\n" + singers
+//            + " - " + year  + "\n" + showStar;
+//    }
 
-        String showStar = "";
-
-        for (int i = 0; i < stars; i++) {
-            showStar += "*";
-        }
-
-        return year + "\n" + title + "\n" + singers
-            + " - " + year  + "\n" + showStar;
-    }
-
-    public String showStar() {
-
-        String showStar = "";
-
-        for (int i = 0; i < stars; i++) {
-            showStar += " * ";
-        }
-
-
-
-        return showStar;
-
-    }
+//    public String showStar() {
+//
+//        String showStar = "";
+//
+//        for (int i = 0; i < stars; i++) {
+//            showStar += " * ";
+//        }
+//
+//
+//
+//        return showStar;
+//
+//    }
 }
