@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvYear = rowView.findViewById(R.id.textViewYear);
         TextView tvSinger = rowView.findViewById(R.id.textViewSinger);
         TextView tvStar = rowView.findViewById(R.id.textViewStar);
+        ImageView ivNew = rowView.findViewById(R.id.imageViewNew);
 
         // Obtain the Android Version information based on the position
         Song currentItem = itemList.get(position);
@@ -46,6 +48,11 @@ public class CustomAdapter extends ArrayAdapter {
         tvYear.setText(currentItem.getYear()+"");
         tvSinger.setText(currentItem.getSingers());
         tvStar.setText(currentItem.showStar());
+        if (currentItem.getYear() > 2018) {
+            ivNew.setVisibility(View.VISIBLE);
+        } else {
+            ivNew.setVisibility(View.INVISIBLE);
+        }
 
         return rowView;
     }
